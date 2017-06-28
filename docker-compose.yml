@@ -9,6 +9,7 @@ services:
         context: ./php
       volumes:
         - ./code:/var/www/html
+        - ./log/php:/var/log/php
       expose:
         - "9000"
       depends_on:
@@ -21,6 +22,7 @@ services:
         context: ./nginx
       volumes:
           - ./code:/var/www/html
+          - ./log/nginx:/var/log/nginx
       ports:
           - "80:80"
           - "443:443"
@@ -33,6 +35,7 @@ services:
       image: mysql:5.7
       volumes:
         - mysql-data:/var/lib/mysql
+        - ./log/mysql:/var/log/mysql
       ports:
         - "3306:3306"
       environment:
@@ -45,6 +48,8 @@ services:
 
     redis:
       image: redis
+      volumes:
+        - ./log/redis:/var/log/redis
       ports:
         - "6379:6379"
 
