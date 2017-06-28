@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+### Nginx Server Container ##################################
+
+    nginx:
+      build:
+        context: ./nginx
+      volumes:
+          - ./www:/var/www/html
+      ports:
+          - "80:80"
+          - "443:443"
+
+### Volumes Setup ###########################################
+
+volumes:
+    mysql-data:
