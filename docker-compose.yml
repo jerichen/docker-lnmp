@@ -14,8 +14,8 @@ services:
         depends_on:
             - mysql
         networks:
-            mynet:
-                ipv4_address: 192.168.101.11
+            dockernet:
+                ipv4_address: 10.5.0.5
 
 ### Nginx Server Container ##################################
     nginx:
@@ -30,8 +30,8 @@ services:
         depends_on:
             - php-fpm
         networks:
-            mynet:
-                ipv4_address: 192.168.101.11
+            dockernet:
+                ipv4_address: 10.5.0.5
 
 ### MySQL Container #########################################
     mysql:
@@ -42,8 +42,8 @@ services:
         ports:
             - "3306:3306"
         networks:
-            mynet:
-                ipv4_address: 192.168.101.11
+            dockernet:
+                ipv4_address: 10.5.0.5
         environment:
             - MYSQL_ROOT_PASSWORD=password
             - MYSQL_DATABASE=homestead
@@ -58,8 +58,8 @@ services:
         ports:
             - "6379:6379"
         networks:
-            mynet:
-                ipv4_address: 192.168.101.11
+            dockernet:
+                ipv4_address: 10.5.0.5
 
 ### Volumes Setup ###########################################
     volumes:
@@ -67,10 +67,9 @@ services:
 
 ### networks Setup ###########################################    
     networks:
-        mynet:
+        dockernet:
         driver: bridge
         ipam:
             config:
-                - subnet: 192.168.0.0
-
-    
+                - subnet: 10.5.0.0/16
+                gateway: 10.5.0.1
