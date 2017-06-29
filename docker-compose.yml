@@ -68,8 +68,12 @@ services:
 ### networks Setup ###########################################    
     networks:
         dockernet:
-        driver: bridge
+            driver: bridge
+            driver_opts:
+                com.docker.network.enable_ipv6: "true"
+                com.docker.network.bridge.enable_ip_masquerade: "false"
         ipam:
+            driver: default
             config:
                 - subnet: 10.5.0.0/16
                 gateway: 10.5.0.1
