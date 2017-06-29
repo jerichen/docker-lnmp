@@ -1,0 +1,8 @@
+172.18.0.1 - - [28/Jun/2017:15:29:47 +0800] "GET / HTTP/1.1" 200 2333 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36" "-"
+172.18.0.1 - - [28/Jun/2017:15:31:30 +0800] "GET / HTTP/1.1" 200 2333 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36" "-"
+172.18.0.1 - - [28/Jun/2017:15:32:37 +0800] "GET / HTTP/1.1" 200 2333 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36" "-"
+172.18.0.1 - - [28/Jun/2017:15:40:30 +0800] "GET / HTTP/1.1" 200 2333 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Kitematic/0.17.0 Chrome/45.0.2454.85 Electron/0.35.4 Safari/537.36" "-"
+172.18.0.1 - - [28/Jun/2017:15:41:00 +0800] "GET / HTTP/1.1" 200 2333 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4" "-"
+172.18.0.1 - - [28/Jun/2017:15:41:00 +0800] "GET /favicon.ico HTTP/1.1" 200 0 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4" "-"
+172.18.0.1 - - [28/Jun/2017:15:46:24 +0800] "GET / HTTP/1.1" 200 2333 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36" "-"
+172.18.0.1 - - [28/Jun/2017:15:46:30 +0800] "GET / HTTP/1.1" 200 2333 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36" "-"

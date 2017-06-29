@@ -1,75 +1,59 @@
+
 version: '3'
 
 services:
 
 ### PHP-FPM Container #######################################
+
     php-fpm:
-        build:
-            context: ./php
-        volumes:
-            - ./code:/var/www/html
-            - ./log/php:/var/log/php
-        expose:
-            - "9000"
-        depends_on:
-            - mysql
-        networks:
-            dockernet:
-                ipv4_address: 10.5.0.5
+      build:
+        context: ./php
+      volumes:
+        - ./code:/var/www/html
+        - ./log/php:/var/log/php-fpm
+      expose:
+        - "9000"
+      depends_on:
+        - mysql
 
 ### Nginx Server Container ##################################
+
     nginx:
-        build:
-            context: ./nginx
-        volumes:
-            - ./code:/var/www/html
-            - ./log/nginx:/var/log/nginx
-        ports:
-            - "80:80"
-            - "443:443"
-        depends_on:
-            - php-fpm
-        networks:
-            dockernet:
-                ipv4_address: 10.5.0.5
+      build:
+        context: ./nginx
+      volumes:
+          - ./code:/var/www/html
+          - ./log/nginx:/var/log/nginx
+      ports:
+          - "80:80"
+          - "443:443"
+      depends_on:
+          - php-fpm
 
 ### MySQL Container #########################################
+
     mysql:
-        image: mysql:5.7
-        volumes:
-            - mysql-data:/var/lib/mysql
-            - ./log/mysql:/var/log/mysql
-        ports:
-            - "3306:3306"
-        networks:
-            dockernet:
-                ipv4_address: 10.5.0.5
-        environment:
-            - MYSQL_ROOT_PASSWORD=password
-            - MYSQL_DATABASE=homestead
-            - MYSQL_USER=homestead
-            - MYSQL_PASSWORD=secret
+      image: mysql:5.7
+      volumes:
+        - mysql-data:/var/lib/mysql
+        - ./log/mysql:/var/log/msql
+      ports:
+        - "3306:3306"
+      environment:
+        - MYSQL_ROOT_PASSWORD=123456
 
-### redis Container #########################################
+### Redis Container #########################################
     redis:
-        image: redis
-        volumes:
-            - ./log/redis:/var/log/redis
-        ports:
-            - "6379:6379"
-        networks:
-            dockernet:
-                ipv4_address: 10.5.0.5
+      image: redis
+      volumes:
+        - ./log/redis:/var/log/redis
+      ports:
+        - "6379:6379"
 
-### networks Setup ###########################################    
-    networks:
-        dockernet:
-            driver: bridge
-            ipam:
-                driver: default
-                config:
-                    - subnet: 10.5.0.0/16
-                    
+### Networks Setup ###########################################
+
+
 ### Volumes Setup ###########################################
-    volumes:
-        mysql-data:
+
+volumes:
+    mysql-data:
