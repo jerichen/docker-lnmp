@@ -61,10 +61,6 @@ services:
             dockernet:
                 ipv4_address: 10.5.0.5
 
-### Volumes Setup ###########################################
-    volumes:
-        mysql-data:
-
 ### networks Setup ###########################################    
     networks:
         dockernet:
@@ -73,3 +69,7 @@ services:
                 driver: default
                 config:
                     - subnet: 10.5.0.0/16
+                    
+### Volumes Setup ###########################################
+    volumes:
+        mysql-data:
