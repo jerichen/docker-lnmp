@@ -52,6 +52,8 @@ services:
         - ./log/redis:/var/log/redis
       ports:
         - "6379:6379"
+      extra_hosts:
+        - "dev.blog.com.tw:127.0.0.1"
 
 ### Networks Setup ###########################################
 
