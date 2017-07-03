@@ -9,7 +9,7 @@ services:
       build:
         context: ./php
       volumes:
-        - ./code:/var/www/html
+        - ./sites:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
       expose:
         - "9000"
