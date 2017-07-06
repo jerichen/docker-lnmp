@@ -49,4 +49,9 @@ SSH docker machine
 docker-machine ssh {name}
 
 查看資訊
-docker-machine env {name}</pre>
+docker-machine env {name}
+
+Run docker machine
+eval "$(docker-machine env {name})"
+
+</pre>
