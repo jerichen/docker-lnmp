@@ -24,7 +24,7 @@ services:
       build:
         context: ./php
       volumes:
-        - ./php:/var/www/html
+        - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
       expose:
         - "9000"
