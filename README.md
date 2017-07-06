@@ -38,3 +38,15 @@ docker-compose up -d (後台執行)
 docker-compose stop
 docker-compose down (刪除所有container)
 docker-compose exec {container-name} bash</pre>
+<h5><span style="text-decoration: underline;">docker-machine</span></h5>
+<pre>docker machine 列表 
+docker-machine ls
+
+建立一個docker machine
+docker-machine create {name}
+
+SSH docker machine
+docker-machine ssh {name}
+
+查看資訊
+docker-machine env {name}</pre>
