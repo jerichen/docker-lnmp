@@ -23,7 +23,7 @@ services:
     php-fpm:
       build:
         context: ./php-fpm
-        dockerfile:"Dockerfile-${PHP_VERSION}"
+        dockerfile: "Dockerfile-${PHP_VERSION}"
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
