@@ -18,18 +18,6 @@ services:
       depends_on:
           - php-fpm
 
-### Certbot Container ##################################
-
-    certbot:
-      build:
-        context: ./certbot
-      volumes:
-        - ./data/certbot/certs/:/var/certs
-        - ./certbot/letsencrypt/:/var/www/letsencrypt
-      environment:
-        - CN="example.domain.com"
-        - EMAIL="jeri.chen0110@gmail.com"
-
 ### PHP-FPM Container #######################################
 
     php-fpm:
