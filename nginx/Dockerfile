@@ -9,10 +9,10 @@ ADD ./nginx.conf /etc/nginx/
 
 RUN rm /etc/nginx/conf.d/default.conf
 
-# openssl create
-ADD ./scripts/after.sh /bin/sh/after.sh
-RUN chmod a+x /bin/sh/after.sh
+# ssl create
+ADD ./scripts/run-ssl.sh /bin/sh/run-ssl.sh
+RUN chmod a+x /bin/sh/run-ssl.sh
 
-ENTRYPOINT ["/bin/sh/after.sh"]
+ENTRYPOINT ["/bin/sh/run-ssl.sh"]
 CMD ["nginx", "-g", "daemon on;"]
  
