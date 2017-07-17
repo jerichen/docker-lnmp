@@ -1,9 +1,9 @@
 server {
     listen 80;
     listen [::]:80;
-    
-    server_name example-2.dev;
-    root /var/www/html/example-2/public;
+
+    server_name dev.web.cheers.com.tw;
+    root /var/www/html/web.cheers.com.tw/public;
     index index.php index.html index.htm;
 
     location / {
@@ -23,5 +23,6 @@ server {
     location ~ /\.ht {
         deny all;
     }
+
 }
 
