@@ -3,7 +3,7 @@ MAINTAINER JeriChen<jeri.chen0110@gmail.com>
 
 ENV TZ=Asia/Taipei
 
-RUN apt-get update; apt-get install -y openssl
+RUN apt-get update; apt-get install -y openssl; apt-get install -y vim
 
 ADD ./nginx.conf /etc/nginx/
 
