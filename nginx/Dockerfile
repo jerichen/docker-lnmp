@@ -9,9 +9,11 @@ ADD ./nginx.conf /etc/nginx/
 
 RUN rm /etc/nginx/conf.d/default.conf
 
-COPY ./scripts/hello.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/hello.sh
-ENTRYPOINT ["/usr/local/bin/hello.sh"]
+# ssl create
+ADD ./scripts/run-ssl.sh /usr/local/bin/run-ssl.sh
+RUN chmod a+x /usr/local/bin/run-ssl.sh
+RUN /usr/local/bin/run-ssl.sh
 
+# ENTRYPOINT ["/usr/local/bin/run-ssl.sh"]
 # CMD ["nginx", "-g", "daemon on;"]
  

@@ -1,4 +1,4 @@
-#!/etc/nginx/sh
+#!/bin/bash
 
 # Config for SSL.
 SSL_DIR="/etc/nginx/ssl"
