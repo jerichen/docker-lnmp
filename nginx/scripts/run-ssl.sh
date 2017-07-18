@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/etc/nginx/sh
 
 # Config for SSL.
 SSL_DIR="/etc/nginx/ssl"
@@ -22,16 +22,17 @@ sed -i "/sendfile on;/a \\        ssl on;" /etc/nginx/nginx.conf
 conf_files="/etc/nginx/sites-available/*"
 for i in $conf_files
 do
-    echo "--- Copying $i SSL crt and key ---"
+    file=${i##*/}
+    echo "--- Copying $file SSL crt and key ---"
     
     DOMAIN=$i
 
-    sudo openssl genrsa -out "$SSL_DIR/$DOMAIN.key" 1024 >/dev/null 2>&amp;1
-    sudo openssl req -new -subj "$(echo -n "$SUBJ" | tr "\n" "/")" -key "$SSL_DIR/$DOMAIN.key" -out "$SSL_DIR/$DOMAIN.csr" -passin pass:$PASSPHRASE >/dev/null 2>&amp;1
-    sudo openssl x509 -req -days 365 -in "$SSL_DIR/$DOMAIN.csr" -signkey "$SSL_DIR/$DOMAIN.key" -out "$SSL_DIR/$DOMAIN.crt" >/dev/null 2>&amp;1
+    openssl genrsa -out "$SSL_DIR/$DOMAIN.key" 1024 >/dev/null 2>&amp;1
+    openssl req -new -subj "$(echo -n "$SUBJ" | tr "\n" "/")" -key "$SSL_DIR/$DOMAIN.key" -out "$SSL_DIR/$DOMAIN.csr" -passin pass:$PASSPHRASE >/dev/null 2>&amp;1
+    openssl x509 -req -days 365 -in "$SSL_DIR/$DOMAIN.csr" -signkey "$SSL_DIR/$DOMAIN.key" -out "$SSL_DIR/$DOMAIN.crt" >/dev/null 2>&amp;1
 
     echo "--- Inserting SSL directives into site's server file. ---"
-    sed -i "/listen 80;/a \\\n    listen 443 ssl;\n    ssl_certificate /etc/nginx/ssl/$i.crt;\n    ssl_certificate_key /etc/nginx/ssl/$i.key;\n\n" /etc/nginx/sites-available/$i
+    sed -i "/listen 80;/a \\\n    listen 443 ssl;\n    ssl_certificate /etc/nginx/ssl/$file.crt;\n    ssl_certificate_key /etc/nginx/ssl/$file.key;\n\n" /etc/nginx/sites-available/$file
 done
 
 echo "--- Restarting Serivces ---"
