@@ -23,5 +23,5 @@ do
     sed -i "/listen 80;/a \\\n    listen 443 ssl;\n    ssl_certificate /etc/nginx/ssl/$file.crt;\n    ssl_certificate_key /etc/nginx/ssl/$file.key;\n\n" /etc/nginx/sites-available/$file
 done
 
-echo "--- Restarting Serivces ---"
-service nginx restart
+# echo "--- Restarting Serivces ---"
+# service nginx restart
