@@ -18,6 +18,7 @@ RUN chmod a+x /usr/local/bin/run-ssl.sh
 # 80 443 ssl
 ADD ./scripts/run-ssl.sh /usr/local/bin/start.sh
 RUN chmod a+x /usr/local/bin/start.sh
+RUN /usr/local/bin/start.sh default
 
 # ENTRYPOINT ["/usr/local/bin/run-ssl.sh"]
 # CMD ["nginx", "-g", "daemon on;"]
