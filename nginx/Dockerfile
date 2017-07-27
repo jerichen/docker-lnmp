@@ -16,7 +16,7 @@ RUN chmod a+x /usr/local/bin/run-ssl.sh
 #RUN /usr/local/bin/run-ssl.sh
 
 # 80 443 ssl
-ADD ./scripts/run-ssl.sh /usr/local/bin/start.sh
+ADD ./scripts/start.sh /usr/local/bin/start.sh
 RUN chmod a+x /usr/local/bin/start.sh
 RUN /usr/local/bin/start.sh default
 
