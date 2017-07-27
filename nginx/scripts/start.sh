@@ -2,6 +2,7 @@
 
 # Config for SSL.
 SSL_DIR="/etc/nginx/ssl"
+site=$1
 
 echo "--- Making SSL Directory ---"
 mkdir -p "$SSL_DIR"
