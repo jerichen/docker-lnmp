@@ -10,15 +10,10 @@ ADD ./sites/ /etc/nginx/sites-available/
 
 RUN rm /etc/nginx/conf.d/default.conf
 
-# ssl create
-ADD ./scripts/run-ssl.sh /usr/local/bin/run-ssl.sh
-RUN chmod a+x /usr/local/bin/run-ssl.sh
-#RUN /usr/local/bin/run-ssl.sh
-
-# 80 443 ssl
-ADD ./scripts/start.sh /usr/local/bin/start.sh
-RUN chmod a+x /usr/local/bin/start.sh
-RUN /usr/local/bin/start.sh default
+# default 80 443 ssl create
+ADD ./scripts/run-ssl.sh /usr/local/bin/default.sh default
+RUN chmod a+x /usr/local/bin/default.sh
+RUN /usr/local/bin/default.sh
 
 # ENTRYPOINT ["/usr/local/bin/run-ssl.sh"]
 # CMD ["nginx", "-g", "daemon on;"]
