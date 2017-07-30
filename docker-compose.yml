@@ -9,7 +9,7 @@ services:
       build:
         context: ./nginx
       volumes:          
-          - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
+#          - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
           - ${NGINX_HTML_PATH}:/var/www/html
           - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
       ports:
