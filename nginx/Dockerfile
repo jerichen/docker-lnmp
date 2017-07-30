@@ -15,6 +15,10 @@ ADD ./scripts/default.sh /usr/local/bin/default.sh
 RUN chmod a+x /usr/local/bin/default.sh
 RUN /usr/local/bin/default.sh default
 
+# other 80 443 ssl create
+ADD ./scripts/run-ssl.sh /usr/local/bin/run-ssl.sh
+RUN chmod a+x /usr/local/bin/run-ssl.sh
+
 # ENTRYPOINT ["/usr/local/bin/run-ssl.sh"]
 # CMD ["nginx", "-g", "daemon on;"]
  

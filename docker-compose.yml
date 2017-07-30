@@ -11,7 +11,6 @@ services:
       volumes:          
           - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
           - ${NGINX_HTML_PATH}:/var/www/html
-          - ${NGINX_SCRIPTS_PATH}:/etc/nginx/sh
           - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
       ports:
           - "${NGINX_HOST_HTTP_PORT}:80"
