@@ -3,6 +3,9 @@
 # Config for SSL.
 site=$1
 
+# change role
+RUN chmod -R guo+w /usr/local/bin/run-ssl.sh  /var/www/html/"$site"/storage
+
 if ! [ -z $site ]; then
 # does not exist 80.443 port config
     echo "--- Copying $file SSL crt and key ---"
