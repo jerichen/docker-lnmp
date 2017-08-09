@@ -13,8 +13,7 @@ if ! [ -z $site ]; then
     openssl req -nodes -new -x509 -keyout /etc/nginx/ssl/"$site".key -out /etc/nginx/ssl/"$site".crt -subj "/C=US/ST=NY/L=NYC/O=Dis/CN=$site"
 
     echo "--- Inserting SSL directives into site's server file. ---"
-    sed -i "/listen 80;/a \\\n   ssl on;\n   ssl_certificate /etc/nginx/ssl/$site.crt;\n   ssl_certificate_key /etc/nginx/ssl/$site.key;\n\n"  /etc/nginx/sites-available/"$site".conf
-    sed -i "/listen 443 ssl;/a \\\n   ssl on;\n   ssl_certificate /etc/nginx/ssl/$site.crt;\n   ssl_certificate_key /etc/nginx/ssl/$site.key;\n\n"  /etc/nginx/sites-available/"$site"_ssl.conf
+    sed -i "/charset utf-8;/a \\\n   ssl_certificate /etc/nginx/ssl/$site.crt;\n   ssl_certificate_key /etc/nginx/ssl/$site.key;\n\n"  /etc/nginx/sites-available/"$site".conf
 else
 # does exist 80.443 port config
     echo "--- default error ---"
