@@ -9,7 +9,7 @@ Nginx + php 7.1-fpm + Mysql + Redis
 3.新增站台.增加ssl
     <b>ex. example.com.tw(必須和資料夾名稱相同)</b>
         $ docker-compose exec nginx
-        $ run /usr/local/bin/run-ssl.sh example.com.tw
+        $ sh /usr/local/bin/run-ssl.sh example.com.tw
 4.修改 hosts 
     <b>ex. example.com.tw(必須和資料夾名稱相同)</b>
         192.168.99.100 dev.example.com.tw
