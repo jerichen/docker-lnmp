@@ -14,9 +14,8 @@ Nginx + php 7.1-fpm + Mysql + Redis
         default.sh : 
             第一次啟動容器時會自動跑default.sh 
             default.sh主要是產生一組default的ssl-key
-            user可以放一支index.php測試是否有正常啟動nginx
-        
-        run-ssl.sh : 
+            user可以放一支index.php測試是否有正常啟動nginx       
+        run-ssl.sh :  
             user也可以不用執行自行建立conf 和 ssl-key
             如執行後即會copy一份default.conf並更名為example.com.tw.conf
             並產生一組example.com.tw ssl-key
@@ -34,7 +33,7 @@ Nginx + php 7.1-fpm + Mysql + Redis
     <b>目前做法</b>
         將不同php版本分別放在不同的docker machine
         nginx + php5.6 + mysql + redis
-        nginx + php7.1 + mysql + redis
+        nginx + php7.1 + mysql + redis
         分別建議專案
 </pre>
 
