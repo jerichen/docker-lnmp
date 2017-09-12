@@ -10,8 +10,14 @@ Nginx + php 7.1-fpm + Mysql + Redis
     <b>ex. example.com.tw(必須和資料夾名稱相同)</b>
         $ docker-compose exec nginx
         $ sh /usr/local/bin/run-ssl.sh example.com.tw
+    <b>其他說明</b>
+        run-ssl.sh(user也可以不用執行自行建立conf)
+        執行後即會copy一份example.com.tw.conf
+        並產生一組ssl key
+       
 4.修改 hosts 
     <b>ex. example.com.tw(必須和資料夾名稱相同)</b>
         192.168.99.100 dev.example.com.tw
 </pre>
+
 
