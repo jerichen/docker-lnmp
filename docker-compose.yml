@@ -9,7 +9,7 @@ services:
       build:
         context: ./nginx
       volumes:          
-#          - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
+          - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
           - ${NGINX_HTML_PATH}:/var/www/html
           - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
       ports:
@@ -31,12 +31,12 @@ services:
       expose:
         - "9000"
       depends_on:
-          - mysql
+          - mariadb
 
 ### MySQL Container #########################################
 
-    mysql:
-      image: mysql:5.7
+    mariadb:
+      image: mariadb:5.5.57
       volumes:
         - mysql-data:/var/lib/mysql
         - ${MYSQL_LOG_PATH}:/var/log/msql
