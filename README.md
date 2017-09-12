@@ -15,7 +15,7 @@ Nginx + php 7.1-fpm + Mysql + Redis
             第一次啟動容器時會自動跑default.sh 
             default.sh主要是產生一組default的ssl-key
             user可以放一支index.php測試是否有正常啟動nginx
-          
+        
         run-ssl.sh : 
             user也可以不用執行自行建立conf 和 ssl-key
             如執行後即會copy一份default.conf並更名為example.com.tw.conf
