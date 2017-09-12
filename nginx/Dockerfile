@@ -19,6 +19,4 @@ RUN /usr/local/bin/default.sh default
 ADD ./scripts/run-ssl.sh /usr/local/bin/run-ssl.sh
 RUN chmod a+x /usr/local/bin/run-ssl.sh
 
-# ENTRYPOINT ["/usr/local/bin/run-ssl.sh"]
-# CMD ["nginx", "-g", "daemon on;"]
  
