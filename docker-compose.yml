@@ -16,23 +16,36 @@ services:
           - "${NGINX_HOST_HTTP_PORT}:80"
           - "${NGINX_HOST_HTTPS_PORT}:443"
       depends_on:
-          - php-fpm
+          - php-fpm-71
+          - php-fpm-56
 
 ### PHP-FPM Container #######################################
 
-    php-fpm:
+    php-fpm-71:
       build:
         context: ./php-fpm
-        dockerfile: "Dockerfile-${PHP_VERSION}"
+        dockerfile: "Dockerfile-71"
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
-        - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/conf.d/php.ini
+        - ./php-fpm/php71.ini:/usr/local/etc/php/conf.d/php.ini
       expose:
         - "9000"
       depends_on:
           - mariadb
 
+    php-fpm-56:
+      build:
+        context: ./php-fpm
+        dockerfile: "Dockerfile-56"
+      volumes:
+        - ${NGINX_HTML_PATH}:/var/www/html
+        - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
+        - ./php-fpm/php56.ini:/usr/local/etc/php/conf.d/php.ini
+      expose:
+        - "9000"
+      depends_on:
+          - mariadb
 ### MySQL Container #########################################
 
     mariadb:

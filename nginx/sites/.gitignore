@@ -1,3 +1,5 @@
 *
 !.gitignore
 !default.conf
+!php56.conf
+!php71.conf
