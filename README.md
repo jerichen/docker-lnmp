@@ -6,14 +6,20 @@ Nginx + php 7.1-fpm + Mysql + Redis
 <pre style="padding-left: 30px;">
 1.下載 docker-lnmp
 2.修改 .env.example to .env
-3.新增站台.增加ssl
-    <b>ex. example.com.tw(必須和資料夾名稱相同)</b>
+3.新增站台.增加ssl(需在nginx容器內作業)
+    <b>ex. example.com.tw(必須和資料夾名稱相同)</b>
         $ docker-compose exec nginx
         $ sh /usr/local/bin/run-ssl.sh example.com.tw
     <b>其他說明</b>
-        run-ssl.sh(user也可以不用執行自行建立conf)
-        執行後即會copy一份example.com.tw.conf
-        並產生一組ssl key
+        default.sh : 
+          第一次啟動容器時會自動跑default.sh 
+          default.sh主要是產生一組default的ssl-key
+          user可以放一支index.php測試是否有正常啟動nginx
+          
+        run-ssl.sh : 
+          user也可以不用執行自行建立conf 和 ssl-key
+          如執行後即會copy一份default.conf並更名為example.com.tw.conf
+          並產生一組example.com.tw ssl-key
        
 4.修改 hosts 
     <b>ex. example.com.tw(必須和資料夾名稱相同)</b>
