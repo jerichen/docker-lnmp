@@ -12,6 +12,7 @@ Nginx + php 7.1-fpm + Mysql + Redis
 4.修改 hosts 
     <b>ex. example.com.tw(必須和資料夾名稱相同)</b>
         127.0.0.1 dev.php56
+        127.0.0.1 dev.php71
     <b>其他說明</b>
        
 5.切換 php版本
