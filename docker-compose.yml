@@ -18,6 +18,7 @@ services:
       depends_on:
           - php-fpm-71
           - php-fpm-56
+          - php-fpm-55
 
 ### PHP-FPM Container #######################################
 
@@ -28,7 +29,7 @@ services:
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
-        - ./php-fpm/php71.ini:/usr/local/etc/php/conf.d/php.ini
+        - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
       expose:
         - "9000"
       depends_on:
@@ -41,7 +42,19 @@ services:
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
-        - ./php-fpm/php56.ini:/usr/local/etc/php/conf.d/php.ini
+        - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
+      expose:
+        - "9000"
+      depends_on:
+          - mariadb
+    php-fpm-55:
+      build:
+        context: ./php-fpm
+        dockerfile: "Dockerfile-55"
+      volumes:
+        - ${NGINX_HTML_PATH}:/var/www/html
+        - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
+        - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
       expose:
         - "9000"
       depends_on:
@@ -55,6 +68,8 @@ services:
         - ${MYSQL_LOG_PATH}:/var/log/msql
       ports:
         - "${MYSQL_PORT}:3306"
+      volumes:
+        - ${MYSQL_DATA_PATH}:/var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -69,9 +84,3 @@ services:
         - ${REDIS_LOG_PATH}:/var/log/redis
       ports:
         - "${REDIS_PORT}:6379"
-
-### Volumes Setup ###########################################
-
-volumes:
-    mysql-data:
-
