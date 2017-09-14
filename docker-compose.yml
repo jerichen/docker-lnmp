@@ -8,7 +8,7 @@ services:
     nginx:
       image: gan068/nginx:latest
       volumes:          
-          - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
+          - ${NGINX_SITES_PATH}:/etc/nginx/sites-enabled
           - ${NGINX_HTML_PATH}:/var/www/html
           - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
       ports:
@@ -22,32 +22,29 @@ services:
 ### PHP-FPM Container #######################################
 
     php-fpm-71:
-      image: gan068/php:71
+      image: gan068/php:php71
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
-        - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
-      expose:
-        - "9000"
       depends_on:
           - mariadb
 
     php-fpm-56:
-      image: gan068/php:56
+      image: gan068/php:php56
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
-        - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
       depends_on:
           - mariadb
+
     php-fpm-55:
-      image: gan068/php:55
+      image: gan068/php:php55
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
-        - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
       depends_on:
           - mariadb
+
 ### MySQL Container #########################################
 
     mariadb:
@@ -55,13 +52,14 @@ services:
       ports:
         - "${MYSQL_PORT}:3306"
       volumes:
-        - ${MYSQL_DATA_PATH}:/var/lib/mysql
+        - mysql-data:/var/lib/mysql
         - ${MYSQL_LOG_PATH}:/var/log/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         - MYSQL_DATABASE=${MYSQL_DATABASE}
         - MYSQL_USER=${MYSQL_USER}
         - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      restart: always
 
 ### Redis Container #########################################
 
@@ -71,3 +69,7 @@ services:
         - ${REDIS_LOG_PATH}:/var/log/redis
       ports:
         - "${REDIS_PORT}:6379"
+
+### Volumes Settings #########################################
+volumes:
+  mysql-data:
