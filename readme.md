@@ -1,4 +1,4 @@
-## **docker 多容器部署LNMP** <h2> 
+**docker 多容器部署LNMP <h2>** 
 **Nginx + php-fpm + Mysql + Redis <h6>**
 
 **操作方法**
@@ -8,9 +8,9 @@
 * 新增nginx 預設ssl憑證 3
 * 修改 hosts 4
     -ex. example.com.tw(必須和資料夾名稱相同)
-        - 127.0.0.1 php55.dev
-        - 127.0.0.1 php56.dev
-        - 127.0.0.1 php71.dev
+        -127.0.0.1 php55.dev
+        -127.0.0.1 php56.dev
+        -127.0.0.1 php71.dev
 
 **其他說明**
 
