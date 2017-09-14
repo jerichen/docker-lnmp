@@ -6,8 +6,7 @@ services:
 ### Nginx Server Container ##################################
 
     nginx:
-      build:
-        context: ./nginx
+      image: gan068/nginx:latest
       volumes:          
           - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
           - ${NGINX_HTML_PATH}:/var/www/html
@@ -23,9 +22,7 @@ services:
 ### PHP-FPM Container #######################################
 
     php-fpm-71:
-      build:
-        context: ./php-fpm
-        dockerfile: "Dockerfile-71"
+      image: gan068/php:71
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
@@ -36,40 +33,30 @@ services:
           - mariadb
 
     php-fpm-56:
-      build:
-        context: ./php-fpm
-        dockerfile: "Dockerfile-56"
+      image: gan068/php:56
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
         - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
-      expose:
-        - "9000"
       depends_on:
           - mariadb
     php-fpm-55:
-      build:
-        context: ./php-fpm
-        dockerfile: "Dockerfile-55"
+      image: gan068/php:55
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
         - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
-      expose:
-        - "9000"
       depends_on:
           - mariadb
 ### MySQL Container #########################################
 
     mariadb:
       image: mariadb:5.5.57
-      volumes:
-        - mysql-data:/var/lib/mysql
-        - ${MYSQL_LOG_PATH}:/var/log/msql
       ports:
         - "${MYSQL_PORT}:3306"
       volumes:
         - ${MYSQL_DATA_PATH}:/var/lib/mysql
+        - ${MYSQL_LOG_PATH}:/var/log/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         - MYSQL_DATABASE=${MYSQL_DATABASE}
