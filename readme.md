@@ -1,5 +1,5 @@
-**docker 多容器部署LNMP <h6>** 
-**Nginx + php-fpm + Mysql + Redis <h2>**
+# docker 多容器部署LNMP <h1>
+## Nginx + php-fpm + Mysql + Redis <h2> 
 
 **操作方法**
 
