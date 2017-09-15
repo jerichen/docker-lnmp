@@ -8,7 +8,7 @@ services:
     nginx:
       image: gan068/nginx:latest
       volumes:          
-          - ${NGINX_SITES_PATH}:/etc/nginx/sites-enabled
+          - ${NGINX_SITE_CONF_PATH}:/etc/nginx/sites-enabled
           - ${NGINX_HTML_PATH}:/var/www/html
           - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
       ports:
