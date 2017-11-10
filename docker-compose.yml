@@ -17,7 +17,7 @@ services:
       depends_on:
           - php-fpm-71
           - php-fpm-56
-          - php-fpm-55
+          - php-fpm-55  
 
 ### PHP-FPM Container #######################################
 
@@ -26,8 +26,8 @@ services:
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
-      depends_on:
-          - mariadb
+      depends_on:   
+          - mariadb   
 
     php-fpm-56:
       image: gan068/php:php56
@@ -68,6 +68,41 @@ services:
         - ${REDIS_LOG_PATH}:/var/log/redis
       ports:
         - "${REDIS_PORT}:6379"
+        
+### selenium Server Container ##################################
+
+    selenium-hub:
+        image: selenium/hub  
+        volumes:
+          - ${SELENIUM_LOG_PATH}:/var/log/selenium        
+        ports:
+          - "${SELENIUM_PORT}:4444"
+        expose:
+          - "9000"
+        depends_on:
+          - nginx
+          
+    chrome:
+        image: selenium/node-chrome-debug
+        environment:
+          HUB_PORT_4444_TCP_ADDR: 'hub'
+          HUB_PORT_4444_TCP_PORT: 4444
+          NODE_MAX_INSTANCES: 3
+          NODE_MAX_SESSION: 3
+        links:          
+          - selenium-hub:hub
+          - nginx:blog.dev
+          
+    firefox:
+        image: selenium/node-firefox-debug
+        environment:
+          HUB_PORT_4444_TCP_ADDR: 'hub'
+          HUB_PORT_4444_TCP_PORT: 4444
+          NODE_MAX_INSTANCES: 3
+          NODE_MAX_SESSION: 3
+        links:          
+          - selenium-hub:hub
+          - nginx:blog.dev
 
 ### Volumes Settings #########################################
 volumes:
