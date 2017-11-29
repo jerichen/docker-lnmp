@@ -72,7 +72,7 @@ services:
 ### selenium Server Container ##################################
 
     selenium-hub:
-        image: selenium/hub    
+        image: selenium/hub  
         volumes:
           - ${SELENIUM_LOG_PATH}:/var/log/selenium        
         ports:
