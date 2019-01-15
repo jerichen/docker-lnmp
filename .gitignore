@@ -1,3 +1,4 @@
 .env
 /sites/*
 !/sites/default/
+.idea/*

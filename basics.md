@@ -52,3 +52,13 @@ Run docker machine
 eval "$(docker-machine env {name})"
 
 </pre>
+
+<h5><span style="text-decoration: underline;">Selenium</span></h5>
+<pre>
+Selenium Grid 的結構分成 Hub 和 Node，每一次使用 Selenium Grid 進行測試任務，
+都是連線到 Hub，再由 Hub 分派測試任務，指定測試任務給符合要求的 Node。
+這個要求可以依照「作業系統」、「瀏覽器」的不同而有不同的區分。
+
+NODE_MAX_SESSION  一個 node，可以開的 session 數量
+NODE_MAX_INSTANCES 指定一個瀏覽器可以開啟得數量
+</pre>
